@@ -47,7 +47,7 @@ public static void main (String[] args)throws InsufficientNumberException {
 		catch(InputMismatchException e)
 		{
 		    System.out.println("Error."+e.getMessage());
-		    continue;
+		    
 		}
 		catch(InsufficientNumberException e)  {
 			System.out.println(e.getMessage()+"Invalid ID");
