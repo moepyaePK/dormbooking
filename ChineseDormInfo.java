@@ -19,5 +19,6 @@ public class ChineseDormInfo extends abstractDorm{
   public String getBill() {
   	return bill;
   }
+  public int getRandomPeople {}
 
 }
