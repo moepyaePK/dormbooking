@@ -9,6 +9,13 @@
             "name": "MainOODP",
             "request": "launch",
             "mainClass": "MainOODP",
+            "projectName": "dormbooking_44bcbb4e"
+        },
+        {
+            "type": "java",
+            "name": "MainOODP",
+            "request": "launch",
+            "mainClass": "MainOODP",
             "projectName": "dormbooking_667e5e72"
         },
         {

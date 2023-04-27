@@ -6,6 +6,7 @@ import javax.sound.midi.Soundbank;
 
 import java.util.Iterator;
 // hello
+//mppk
 public class LamduanInfo extends abstractDorm {
 
    private double price = 4000;
