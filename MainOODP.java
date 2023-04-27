@@ -5,9 +5,10 @@ public  class MainOODP extends OODP{
 private String gender;
 private String firstTwoDigit;
 Scanner input = new Scanner(System.in);
+private int roomNo;
 
 
-public static void main (String[] args) {
+    public static void main (String[] args) throws WrongInputException {
 	System.out.println("Welcome to the Registration System.");
 	MainOODP start = new MainOODP();
 	
@@ -15,24 +16,20 @@ public static void main (String[] args) {
 	
 		
 	
-	}
-	public void checkStudentID()
-	{
+    }
+
+    public void checkStudentID() throws WrongInputException{
 		boolean IDcheck = false;
 		while(!IDcheck){
-			try 
-			{
+			try{
 			 System.out.println("Enter your student ID");
 			 String ID = input.next();
 			 Long intID = Long.parseLong(ID);	
-			 firstTwoDigit = ID.substring(0, 2);
-			 
-			 if (ID.length()==10){
+			 firstTwoDigit = ID.substring(0, 2);			 
+			 	if (ID.length()==10){
 				IDcheck = true;
-				checkStudentYear(firstTwoDigit);
-				
-			} 
-			 else {
+				checkStudentYear(firstTwoDigit);} 
+			    else {
 				System.out.println("ID must have 10 numbers");}
 			} 
 			catch (NumberFormatException e) 
@@ -49,11 +46,11 @@ public static void main (String[] args) {
 			gender = gender.toLowerCase();
 			if(gender.equalsIgnoreCase("m")) {
 		    	return true;		    
-		}
+		    }
 		return false;
-	}
+    }
 
-	public void checkStudentYear(String firstTwoDigit){
+    public void checkStudentYear(String firstTwoDigit) throws WrongInputException {
 		if (firstTwoDigit.equals("65")){
 			if(checkGender())
 			{
@@ -69,7 +66,16 @@ public static void main (String[] args) {
 							LamduanInfo dorminfo= new LamduanInfo(dorm);
 							System.out.println(dorminfo.getPrice());
 							System.out.println(dorminfo.getBill());
+							dorminfo.checkRooms();
+							boolean a=false;
+							while(a==false){
+							System.out.print("Please enter Room No to book : ");
+							roomNo= input.nextInt();
+							a = dorminfo.bookRoom(roomNo);
+							}
 							
+							
+																					
 						}
 			}
 			else{/*female 1st year dorm */}
@@ -84,7 +90,7 @@ public static void main (String[] args) {
 		}
 	}
 		
-	}
+}
 	
 	
 	
