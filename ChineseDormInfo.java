@@ -1,4 +1,5 @@
 import java.util.*;
+// test update
 public class ChineseDormInfo extends abstractDorm{
 	private double price = 4000;
 	 private String bill = "Pay per unit";
