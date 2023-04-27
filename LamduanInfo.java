@@ -5,7 +5,7 @@ import java.util.Scanner;
 import javax.sound.midi.Soundbank;
 
 import java.util.Iterator;
-
+// hello
 public class LamduanInfo extends abstractDorm {
 
    private double price = 4000;
