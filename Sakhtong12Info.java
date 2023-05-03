@@ -1,19 +1,26 @@
 
-public class Sakhtong12Info extends abstractDorm{
+public class Sakhtong12Info extends GeneralDorm{
+   public static int[][] rooms = new int[40][2];
 	 private double price = 4000;
 	 private String bill = "Pay per unit";
-     private String dormName;
-     
-     
+        
    public Sakhtong12Info(String name){
-   	 dormName = name;
-    }
+   	super(name);
+   }
+
+   public Sakhtong12Info(int[][] roomArray){
+      super(roomArray);
+      Sakhtong12Info.rooms=roomArray;
+   }
      
    public double getPrice() {
    	return price;
+      
    }
    
    public String getBill() {
    	return bill;
    }
+   
+   
 }
