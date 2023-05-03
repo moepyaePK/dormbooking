@@ -1,12 +1,14 @@
 
-public class FInfo extends abstractDorm{
-	 private double price = 4000;
-     private String bill = "400";
-     private String dormName;
-     
+public class FInfo extends GeneralDorm{
+	private double price = 4000;
+  private String bill = "400";
      
    public FInfo(String name){
-   	 dormName = name;
+   	 super(name);
+    }
+    public FInfo(int[][] roomArray){
+      super(roomArray);
+      this.rooms=roomArray;
     }
      
    public double getPrice() {

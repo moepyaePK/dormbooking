@@ -1,45 +1,120 @@
 import java.util.*;
 
-import java.lang.*;
-public  class MainOODP extends OODP{
+public  class MainOODP{
+	
 private String gender;
 private String firstTwoDigit;
-Scanner input = new Scanner(System.in);
-private int roomNo;
+static long longID;
+static String name;
+public int [][] Frooms = new int[40][2];
+public int [][] Lrooms = new int[40][2];
+public int [][] L7rooms = new int[40][2];
+public int [][] Chineserooms = new int[40][2];
+public int [][] S12rooms = new int[40][2];
+public int [][] S3rooms = new int[40][2];
+
+ChineseDormInfo ChineseDorm= new ChineseDormInfo(Chineserooms);
+L7Info L7Dorm= new L7Info(L7rooms);
+Sakhtong12Info S12Dorm= new Sakhtong12Info(S12rooms);
+Sakhtong3Info S3Dorm= new Sakhtong3Info(S3rooms);
+LamduanInfo lamduanDorm= new LamduanInfo(Lrooms);
+FInfo fDorm= new FInfo(Frooms);
+
+HashSet<Long> listStudent = new HashSet<Long>();
+Scanner input = new Scanner(System.in); // if make this non static field to static, all value will be the same
 
 
-    public static void main (String[] args) throws WrongInputException {
-	System.out.println("Welcome to the Registration System.");
+
+
+    public static void main (String[] args) {
 	MainOODP start = new MainOODP();
-	
-		start.checkStudentID();
-	
-		
+		boolean loop = true;
+		//start.writeFile(10,6531503185L, "Meo");		
+		while(loop){
+			start.fillInfo();
+			start.checkStudentID();
+			System.out.print("1===>Back to Main Menu\n2===>Exit\n Select : ");
+			int menu = start.input.nextInt();
+			System.out.println("-----------------------------------------------------------------------------");
+			if(menu==1){
+				loop=true;
+			}
+			else{
+				System.out.println("\nThank you for using our system!");
+				loop=false;
+			}
+		}
 	
     }
+	public void fillInfo(){
+		System.out.print("Enter your Full Name : ");
+		name = input.next(); // thats why creat an instance to make reference
+		
+	}
+	
 
-    public void checkStudentID() throws WrongInputException{
+    public void checkStudentID(){
 		boolean IDcheck = false;
-		while(!IDcheck){
-			try{
-			 System.out.println("Enter your student ID");
-			 String ID = input.next();
-			 Long intID = Long.parseLong(ID);	
-			 firstTwoDigit = ID.substring(0, 2);			 
-			 	if (ID.length()==10){
-				IDcheck = true;
-				checkStudentYear(firstTwoDigit);} 
-			    else {
-				System.out.println("ID must have 10 numbers");}
+		while(!IDcheck)
+		{
+			try
+			{
+			 	System.out.print("Enter your student ID : ");
+				String ID = input.next();
+				longID = Long.parseLong(ID);	
+				firstTwoDigit = ID.substring(0, 2);			 
+			 	if (ID.length()==10)
+				{ 	
+					if(checkAlreadyBooked(listStudent, longID)==false){
+						IDcheck = true;
+						checkStudentYear(firstTwoDigit);
+						addID(listStudent, longID);
+					}
+					else{
+						System.out.println("\nThis ID has already booked a room!\nPlease choose another ID!\n");
+						return;
+					}
+					
+					
+				} 
+			    else 
+				{
+					System.out.println("ID must have 10 numbers");
+				}
+				System.out.println();
 			} 
 			catch (NumberFormatException e) 
 			{
 				System.out.println("ID must be Numbers only!");
+				System.out.println();
 				continue;
 			}
 		} 
 					
 	}
+
+	public void addID(HashSet<Long> list,long ID){
+		list.add(ID);
+	}
+	public boolean checkAlreadyBooked(HashSet<Long> list, long ID){
+		if (list.size()==0){
+			return false;
+		} else {
+			for(long lists : list){
+				if (lists==ID){
+					return true;
+				}
+				else{
+					return false;
+				}
+				
+			}
+		}		
+		return false;
+
+
+	}
+
 	public boolean checkGender(){
 		System.out.println("Enter your gender : m or f ");
 			gender = input.next();
@@ -50,39 +125,56 @@ private int roomNo;
 		return false;
     }
 
-    public void checkStudentYear(String firstTwoDigit) throws WrongInputException {
+    public void checkStudentYear(String firstTwoDigit) {
 		if (firstTwoDigit.equals("65")){
 			if(checkGender())
 			{
-				System.out.println("Male dormitory");
-						System.out.println("L1 L2 L3 L4");
-						System.out.println("-------------");
-						
-						String dorm = input.next();
-						System.out.println("You have typed : ");
-						System.out.print(dorm);
-						if(dorm.equals("L1") || dorm.equals("L2")|| dorm.equals("L3")|| dorm.equals("L4")) 
-						{
-							LamduanInfo dorminfo= new LamduanInfo(dorm);
-							System.out.println(dorminfo.getPrice());
-							System.out.println(dorminfo.getBill());
-							dorminfo.checkRooms();
-							boolean a=false;
-							while(a==false){
-							System.out.print("Please enter Room No to book : ");
-							roomNo= input.nextInt();
-							a = dorminfo.bookRoom(roomNo);
-							}
-							
-							
-																					
-						}
+				System.out.print("Male dormitory\nL1, L2, L3, L4\n-------------\nYou select : ");
+				String dorm = input.next();
+				dorm=dorm.toUpperCase();
+				if(dorm.equals("L1") || dorm.equals("L2")|| dorm.equals("L3")|| dorm.equals("L4")) 
+				{	
+					GenericBooking<LamduanInfo> myDorm= new GenericBooking<>(lamduanDorm);
+					myDorm.print();
+																												
+				}
 			}
-			else{/*female 1st year dorm */}
+			else{
+				System.out.print("Female dormitory\nF , L5\n-------------\nYou select : ");
+				String dorm = input.next();
+				dorm=dorm.toUpperCase();
+				if(dorm.equals("F")){
+					GenericBooking<FInfo> myDorm = new GenericBooking<>(fDorm);
+					myDorm.print();
+				}
+				else if(dorm.equals("L7")){
+					GenericBooking<LamduanInfo> myDorm = new GenericBooking<>(lamduanDorm);
+					myDorm.print();
+				}
+			}
 		}
+		
 		else if(firstTwoDigit.equals("64")){
-			if(checkGender()){/* 64 male dorm */}
-			else{/*64 female dorm */}
+			if(checkGender()){
+				System.out.print("Male dormitory\nL1, L2, L3\n-------------\nYou select : ");
+				String dorm = input.next();
+				dorm=dorm.toUpperCase();
+				if(dorm.equals("L1") || dorm.equals("L2")|| dorm.equals("L3")) 
+				{	
+					GenericBooking<LamduanInfo> myDorm= new GenericBooking<>(lamduanDorm);
+					myDorm.print();
+																												
+				}
+			}
+			else{
+				System.out.print("Female dormitory\nChinese Dorm\n-------------\nYou select : ");
+				String dorm = input.next();
+				dorm=dorm.toUpperCase();
+				if(dorm.equals("Chinese")) 
+				{ GenericBooking<ChineseDormInfo> myDorm = new GenericBooking<>(ChineseDorm);
+					myDorm.print();																									
+				}
+		}
 		}
 		else if (firstTwoDigit.equals("63")){
 			if(checkGender()){/*63 male dorm */}
