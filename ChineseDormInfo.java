@@ -4,10 +4,7 @@ public class ChineseDormInfo extends GeneralDorm{
 	private double price = 5500;
 	private String bill = "Pay per unit";
     
-    
-  public ChineseDormInfo(String name){
-  	 super(name);
-   }
+
 
    public ChineseDormInfo(int[][] roomArray){
       super(roomArray);

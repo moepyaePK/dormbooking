@@ -3,9 +3,6 @@ public class FInfo extends GeneralDorm{
 	private double price = 4000;
   private String bill = "400";
      
-   public FInfo(String name){
-   	 super(name);
-    }
     public FInfo(int[][] roomArray){
       super(roomArray);
       this.rooms=roomArray;

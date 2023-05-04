@@ -7,9 +7,9 @@ public class GenericBooking<T extends GeneralDorm> {
     public GenericBooking(T dormType){
         this.dormType= dormType;
     }
-    public void print(){
-        System.out.println(dormType.dormName+" room price : "+dormType.getPrice()+" per semester");
-        System.out.println(dormType.dormName+" utility fees : "+dormType.getBill());
+    public void print(String dormName){
+        System.out.println(dormName+" room price : "+dormType.getPrice()+" per semester");
+        System.out.println(dormName+" utility fees : "+dormType.getBill());
         dormType.checkRooms();
         boolean a=false;
         while(a==false){

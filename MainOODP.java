@@ -131,7 +131,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 				if(dorm.equals("L1") || dorm.equals("L2")|| dorm.equals("L3")|| dorm.equals("L4")) 
 				{	
 					GenericBooking<LamduanInfo> myDorm= new GenericBooking<>(lamduanDorm);
-					myDorm.print();
+					myDorm.print(dorm);
 																												
 				}
 				else{
@@ -144,7 +144,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 				dorm=dorm.toUpperCase();
 				if(dorm.equals("F")){
 					GenericBooking<FInfo> myDorm = new GenericBooking<>(fDorm);
-					myDorm.print();
+					myDorm.print(dorm);
 				}
 				else{
 					System.out.println("You print wrong.");
@@ -160,7 +160,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 				if(dorm.equals("L1") || dorm.equals("L2")|| dorm.equals("L3")) 
 				{	
 					GenericBooking<LamduanInfo> myDorm= new GenericBooking<>(lamduanDorm);
-					myDorm.print();
+					myDorm.print(dorm);
 																												
 				}
 			}
@@ -170,19 +170,19 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 				dorm=dorm.toUpperCase();
 				if(dorm.equals("Chinese")) 
 				{ GenericBooking<ChineseDormInfo> myDorm = new GenericBooking<>(ChineseDorm);
-					myDorm.print();																									
+					myDorm.print(dorm);																									
 				}
 				else if(dorm.equals("Sakhtong 1")||dorm.equals("Sakhtong 2")) 
 				{ GenericBooking<Sakhtong12Info> myDorm = new GenericBooking<>(S12Dorm);
-					myDorm.print();																									
+					myDorm.print(dorm);																									
 				}
 				else if(dorm.equals("Sakhtong 3")) 
 				{ GenericBooking<Sakhtong3Info> myDorm = new GenericBooking<>(S3Dorm);
-					myDorm.print();																									
+					myDorm.print(dorm);																									
 				}
 				else if(dorm.equals("L7")) 
 				{ GenericBooking<L7Info> myDorm = new GenericBooking<>(L7Dorm);
-					myDorm.print();																									
+					myDorm.print(dorm);																									
 				}
 				else{
 					System.out.println("You type wrong.");

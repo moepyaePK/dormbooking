@@ -4,9 +4,6 @@ public class L7Info extends GeneralDorm{
 	private String bill = "Pay per unit";
     
     
-  public L7Info(String name){
-  	 super(name);
-   }
    public L7Info(int[][] roomArray){
     super(roomArray);
     this.rooms=roomArray;

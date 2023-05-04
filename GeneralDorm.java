@@ -5,19 +5,20 @@ public abstract class GeneralDorm
    public int[][] rooms = new int[40][2];
    public int[][] unavailabe = new int[40][2];
    public int[][] availabe = new int[40][2];
-   String dormName;
    //MainOODP obj;
    
-   public GeneralDorm(String name) {
-      this.dormName = name;
-   }
    public GeneralDorm(int[][] roomArray){
       this.rooms=roomArray;
-    }
+      
+   }
 
    public abstract double getPrice();
 
    public abstract String getBill();
+
+   public String dormName(String dorm){
+      return dorm;
+   }
     
    public boolean bookRoom(int roomNo) 
    {
