@@ -148,7 +148,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 					myDorm.print();
 				}
 				else if(dorm.equals("L7")){
-					GenericBooking<LamduanInfo> myDorm = new GenericBooking<>(lamduanDorm);
+					GenericBooking<L7Info> myDorm = new GenericBooking<>(L7Dorm);
 					myDorm.print();
 				}
 			}
