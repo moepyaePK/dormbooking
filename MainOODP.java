@@ -147,7 +147,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 					myDorm.print(dorm);
 				}
 				else{
-					System.out.println("You print wrong.");
+					System.out.println("You type wrong.");
 				}
 			}
 		}
@@ -163,30 +163,37 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 					myDorm.print(dorm);
 																												
 				}
+				else{
+					System.out.println("You type wrong.");
+				}
 			}
 			else{
-				System.out.print("Female dormitory\nChinese Dorm\nSakhtong 1\nSakhtong 2\n Sakhtong 3\nL7\n-------------\nYou select : ");
+				System.out.print("Female dormitory\nChinese Dorm (Type C1 for this)\nSakhtong 1(Type S1 for this)\nSakhtong 2(Type S2 for this)\nSakhtong 3(Type S3 for this)\nL7\n-------------\nYou select : ");
 				String dorm = input.next();
 				dorm=dorm.toUpperCase();
-				if(dorm.equals("Chinese")) 
+				if(dorm.equals("C1")) 
 				{ GenericBooking<ChineseDormInfo> myDorm = new GenericBooking<>(ChineseDorm);
-					myDorm.print(dorm);																									
+					myDorm.print();																									
 				}
-				else if(dorm.equals("Sakhtong 1")||dorm.equals("Sakhtong 2")) 
+				else if(dorm.equals("S1")||dorm.equals("S2")) 
 				{ GenericBooking<Sakhtong12Info> myDorm = new GenericBooking<>(S12Dorm);
-					myDorm.print(dorm);																									
+					myDorm.print();																									
 				}
-				else if(dorm.equals("Sakhtong 3")) 
+				else if(dorm.equals("S3")) 
 				{ GenericBooking<Sakhtong3Info> myDorm = new GenericBooking<>(S3Dorm);
-					myDorm.print(dorm);																									
+					myDorm.print();																									
 				}
 				else if(dorm.equals("L7")) 
 				{ GenericBooking<L7Info> myDorm = new GenericBooking<>(L7Dorm);
-					myDorm.print(dorm);																									
+					myDorm.print();																									
 				}
 				else{
 					System.out.println("You type wrong.");
 				}
+
+				
+					
+				
 				
 		}
 		}
