@@ -31,7 +31,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 		boolean loop = true;
 		//start.writeFile(10,6531503185L, "Meo");		
 		while(loop){
-			start.fillInfo();
+			
 			start.checkStudentID();
 			System.out.print("1===>Back to Main Menu\n2===>Exit\n Select : ");
 			int menu = start.input.nextInt();
@@ -46,11 +46,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 		}
 	
     }
-	public void fillInfo(){
-		System.out.print("Enter your Full Name : ");
-		name = input.nextLine(); // thats why creat an instance to make reference
-		
-	}
+	
 	
 
     public void checkStudentID(){
@@ -138,6 +134,9 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 					myDorm.print();
 																												
 				}
+				else{
+					System.out.println("You type wrong.");
+				}
 			}
 			else{
 				System.out.print("Female dormitory\nF , L5\n-------------\nYou select : ");
@@ -147,14 +146,13 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 					GenericBooking<FInfo> myDorm = new GenericBooking<>(fDorm);
 					myDorm.print();
 				}
-				else if(dorm.equals("L7")){
-					GenericBooking<LamduanInfo> myDorm = new GenericBooking<>(lamduanDorm);
-					myDorm.print();
+				else{
+					System.out.println("You print wrong.");
 				}
 			}
 		}
 		
-		else if(firstTwoDigit.equals("64")){
+		else if(firstTwoDigit.equals("64")||firstTwoDigit.equals("63")||firstTwoDigit.equals("62")||firstTwoDigit.equals("61")){
 			if(checkGender()){
 				System.out.print("Male dormitory\nL1, L2, L3\n-------------\nYou select : ");
 				String dorm = input.next();
@@ -167,22 +165,33 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 				}
 			}
 			else{
-				System.out.print("Female dormitory\nChinese , L7 \n-------------\nYou select : ");
+				System.out.print("Female dormitory\nChinese Dorm\nSakhtong 1\nSakhtong 2\n Sakhtong 3\nL7\n-------------\nYou select : ");
 				String dorm = input.next();
 				dorm=dorm.toUpperCase();
 				if(dorm.equals("Chinese")) 
 				{ GenericBooking<ChineseDormInfo> myDorm = new GenericBooking<>(ChineseDorm);
 					myDorm.print();																									
 				}
-				else{
-					GenericBooking<L7Info> myDorm = new GenericBooking<>(L7Dorm);
-					myDorm.print();
+				else if(dorm.equals("Sakhtong 1")||dorm.equals("Sakhtong 2")) 
+				{ GenericBooking<Sakhtong12Info> myDorm = new GenericBooking<>(S12Dorm);
+					myDorm.print();																									
 				}
+				else if(dorm.equals("Sakhtong 3")) 
+				{ GenericBooking<Sakhtong3Info> myDorm = new GenericBooking<>(S3Dorm);
+					myDorm.print();																									
+				}
+				else if(dorm.equals("L7")) 
+				{ GenericBooking<L7Info> myDorm = new GenericBooking<>(L7Dorm);
+					myDorm.print();																									
+				}
+				else{
+					System.out.println("You type wrong.");
+				}
+				
 		}
 		}
-		else if (firstTwoDigit.equals("63")){
-			if(checkGender()){/*63 male dorm */}
-			else{/*63 female */}
+		else {
+			System.out.println("Wrong ID!");
 		}
 	}
 		
