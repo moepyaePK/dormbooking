@@ -147,7 +147,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 					myDorm.print();
 				}
 				else{
-					System.out.println("You print wrong.");
+					System.out.println("You type wrong.");
 				}
 			}
 		}
