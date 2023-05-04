@@ -113,7 +113,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 
 	public boolean checkGender(){
 		System.out.println("Enter your gender : m or f ");
-			gender = input.nextLine();
+			gender = input.next();
 			gender = gender.toLowerCase();
 			if(gender.equalsIgnoreCase("m")) {
 		    	return true;		    
@@ -162,6 +162,9 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 					GenericBooking<LamduanInfo> myDorm= new GenericBooking<>(lamduanDorm);
 					myDorm.print();
 																												
+				}
+				else{
+					System.out.println("You type wrong.");
 				}
 			}
 			else{
