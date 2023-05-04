@@ -126,7 +126,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 			if(checkGender())
 			{
 				System.out.print("Male dormitory\nL1, L2, L3, L4\n-------------\nYou select : ");
-				String dorm = input.nextLine();
+				String dorm = input.next();
 				dorm=dorm.toUpperCase();
 				if(dorm.equals("L1") || dorm.equals("L2")|| dorm.equals("L3")|| dorm.equals("L4")) 
 				{	
@@ -140,7 +140,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 			}
 			else{
 				System.out.print("Female dormitory\nF , L5\n-------------\nYou select : ");
-				String dorm = input.nextLine();
+				String dorm = input.next();
 				dorm=dorm.toUpperCase();
 				if(dorm.equals("F")){
 					GenericBooking<FInfo> myDorm = new GenericBooking<>(fDorm);
@@ -155,7 +155,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 		else if(firstTwoDigit.equals("64")||firstTwoDigit.equals("63")||firstTwoDigit.equals("62")||firstTwoDigit.equals("61")){
 			if(checkGender()){
 				System.out.print("Male dormitory\nL1, L2, L3\n-------------\nYou select : ");
-				String dorm = input.nextLine();
+				String dorm = input.next();
 				dorm=dorm.toUpperCase();
 				if(dorm.equals("L1") || dorm.equals("L2")|| dorm.equals("L3")) 
 				{	
@@ -168,31 +168,35 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 				}
 			}
 			else{
-				System.out.print("Female dormitory\nChinese Dorm\nSakhtong 1\nSakhtong 2\nSakhtong 3\nL7\n-------------\nYou select : ");
-				String dorm = input.nextLine();
+				System.out.print("Female dormitory\nChinese Dorm (Type C1 for this)\nSakhtong 1(Type S1 for this)\nSakhtong 2(Type S2 for this)\nSakhtong 3(Type S3 for this)\nL7\n-------------\nYou select : ");
+				String dorm = input.next();
 				dorm=dorm.toUpperCase();
-				if(dorm.equals("CHINESE DORM")) 
+				if(dorm.equals("C1")) 
 				{ GenericBooking<ChineseDormInfo> myDorm = new GenericBooking<>(ChineseDorm);
 					myDorm.print();	
-					return;																										
+																															
 				}
-				else if(dorm.equals("SAKHTONG 1")||dorm.equals("SAKHTONG 2")) 
+				else if(dorm.equals("S1")||dorm.equals("S2")) 
 				{ GenericBooking<Sakhtong12Info> myDorm = new GenericBooking<>(S12Dorm);
 					myDorm.print();	
-					return;																										
+																														
 				}
-				else if(dorm.equals("SAKHTONG 3")) 
+				else if(dorm.equals("S3")) 
 				{ GenericBooking<Sakhtong3Info> myDorm = new GenericBooking<>(S3Dorm);
 					myDorm.print();	
-					return;																										
+																														
 				}
 				else if(dorm.equals("L7")) 
 				{ GenericBooking<L7Info> myDorm = new GenericBooking<>(L7Dorm);
 					myDorm.print();	
-					return;																								
+																											
 				}
-				
+				else{
 					System.out.println("You type wrong.");
+				}
+
+				
+					
 				
 				
 		}
