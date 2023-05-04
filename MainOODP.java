@@ -173,19 +173,19 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 				dorm=dorm.toUpperCase();
 				if(dorm.equals("C1")) 
 				{ GenericBooking<ChineseDormInfo> myDorm = new GenericBooking<>(ChineseDorm);
-					myDorm.print();																									
+					myDorm.print(dorm);																									
 				}
 				else if(dorm.equals("S1")||dorm.equals("S2")) 
 				{ GenericBooking<Sakhtong12Info> myDorm = new GenericBooking<>(S12Dorm);
-					myDorm.print();																									
+					myDorm.print(dorm);																									
 				}
 				else if(dorm.equals("S3")) 
 				{ GenericBooking<Sakhtong3Info> myDorm = new GenericBooking<>(S3Dorm);
-					myDorm.print();																									
+					myDorm.print(dorm);																									
 				}
 				else if(dorm.equals("L7")) 
 				{ GenericBooking<L7Info> myDorm = new GenericBooking<>(L7Dorm);
-					myDorm.print();																									
+					myDorm.print(dorm);																									
 				}
 				else{
 					System.out.println("You type wrong.");
