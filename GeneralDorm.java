@@ -1,5 +1,5 @@
 
-
+// github commit history htl ko ma yout bu yw
 public abstract class GeneralDorm
 {
    public int[][] rooms = new int[40][2];
