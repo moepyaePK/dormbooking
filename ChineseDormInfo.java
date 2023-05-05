@@ -20,33 +20,7 @@ public class ChineseDormInfo extends GeneralDorm{
   }
 
   @Override
-  public boolean bookRoom(int roomNo) 
-   {
-      boolean m = false;         
-      for(int i =0; i<rooms.length; i++)
-      {
-         if(roomNo==rooms[i][0] && !(rooms[i][1]==3))
-         {
-            System.out.println("Room No."+roomNo+" has been booked successfully!");
-
-            
-            rooms[i][1]+=1;
-
-            //AvailabeRooms(rooms);
-            //UnavailabeRooms(rooms);
-            
-            return true;
-         }
-         else if (roomNo==rooms[i][0] && rooms[i][1]==3)
-         {
-            System.out.println("This room is unavailable!");
-            
-            return false;
-         }
-         
-      }
-      return m;                
-   } 
+  
   public int[][] fillRandomRoom(int[][] rooms) {
     int roomnum = 101;
     for (int i = 0; i < rooms.length; i++) {
@@ -89,6 +63,34 @@ public class ChineseDormInfo extends GeneralDorm{
   }
   return rooms;
 }
+
+public boolean bookRoom(int roomNo) 
+   {
+      boolean m = false;         
+      for(int i =0; i<rooms.length; i++)
+      {
+         if(roomNo==rooms[i][0] && !(rooms[i][1]==3))
+         {
+            System.out.println("Room No."+roomNo+" has been booked successfully!");
+
+            
+            rooms[i][1]+=1;
+
+            //AvailabeRooms(rooms);
+            //UnavailabeRooms(rooms);
+            
+            return true;
+         }
+         else if (roomNo==rooms[i][0] && rooms[i][1]==3)
+         {
+            System.out.println("This room is unavailable!");
+            
+            return false;
+         }
+         
+      }
+      return m;                
+   } 
    /* 
   public int[][] AvailabeRooms(int[][] rooms){
     for (int i=0;i<rooms.length ; i++){
