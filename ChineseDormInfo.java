@@ -1,5 +1,5 @@
 
-// test update
+//hello
 public class ChineseDormInfo extends GeneralDorm{
 	private double price = 5500;
 	private String bill = "Pay per unit";
@@ -20,6 +20,33 @@ public class ChineseDormInfo extends GeneralDorm{
   }
 
   @Override
+  public boolean bookRoom(int roomNo) 
+   {
+      boolean m = false;         
+      for(int i =0; i<rooms.length; i++)
+      {
+         if(roomNo==rooms[i][0] && !(rooms[i][1]==3))
+         {
+            System.out.println("Room No."+roomNo+" has been booked successfully!");
+
+            
+            rooms[i][1]+=1;
+
+            //AvailabeRooms(rooms);
+            //UnavailabeRooms(rooms);
+            
+            return true;
+         }
+         else if (roomNo==rooms[i][0] && rooms[i][1]==3)
+         {
+            System.out.println("This room is unavailable!");
+            
+            return false;
+         }
+         
+      }
+      return m;                
+   } 
   public int[][] fillRandomRoom(int[][] rooms) {
     int roomnum = 101;
     for (int i = 0; i < rooms.length; i++) {
@@ -52,8 +79,8 @@ public class ChineseDormInfo extends GeneralDorm{
    if(sumArray(rooms)==0){
       fillRandomRoom(rooms);  
    }
-  AvailabeRooms(rooms);
-  UnavailabeRooms(rooms);      
+  //AvailabeRooms(rooms);
+  //UnavailabeRooms(rooms);      
   System.out.println("Availabe Room number\n-----------");
   for (int i=0;i<rooms.length ; i++){
      if(rooms[i][1]!=3) {
@@ -62,34 +89,7 @@ public class ChineseDormInfo extends GeneralDorm{
   }
   return rooms;
 }
-public boolean bookRoom(int roomNo) 
-   {
-      boolean m = false;         
-      for(int i =0; i<rooms.length; i++)
-      {
-         if(roomNo==rooms[i][0] && !(rooms[i][1]==3))
-         {
-            System.out.println("Room No."+roomNo+" has been booked successfully!");
-
-            
-            rooms[i][1]+=1;
-
-            AvailabeRooms(rooms);
-            UnavailabeRooms(rooms);
-            
-            return true;
-         }
-         else if (roomNo==rooms[i][0] && rooms[i][1]==3)
-         {
-            System.out.println("This room is unavailable!");
-            
-            return false;
-         }
-         
-      }
-      return m;                
-   } 
-
+   /* 
   public int[][] AvailabeRooms(int[][] rooms){
     for (int i=0;i<rooms.length ; i++){
        if(rooms[i][1]!=3) {
@@ -109,7 +109,7 @@ public int[][] UnavailabeRooms(int[][] rooms){
 }
 return unavailabe;
 
-}
+} */
 
 
   
