@@ -13,6 +13,7 @@ public int [][] L7rooms = new int[40][2];
 public int [][] Chineserooms = new int[40][2];
 public int [][] S12rooms = new int[40][2];
 public int [][] S3rooms = new int[40][2];
+public int [][] L8rooms = new int[40][2];
 
 ChineseDormInfo ChineseDorm= new ChineseDormInfo(Chineserooms);
 L7Info L7Dorm= new L7Info(L7rooms);
@@ -20,6 +21,7 @@ Sakhtong12Info S12Dorm= new Sakhtong12Info(S12rooms);
 Sakhtong3Info S3Dorm= new Sakhtong3Info(S3rooms);
 LamduanInfo lamduanDorm= new LamduanInfo(Lrooms);
 FInfo fDorm= new FInfo(Frooms);
+L8Info L8Dorm = new L8Info(L8rooms);
 
 HashSet<Long> listStudent = new HashSet<Long>();
 Scanner input = new Scanner(System.in); // if make this non static field to static, all value will be the same
@@ -94,22 +96,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 		list.add(ID);
 	}
 	public boolean checkAlreadyBooked(HashSet<Long> list, long ID){
-		if (list.size()==0){
-			return false;
-		} else {
-			for(long lists : list){
-				if (lists==ID){
-					return true;
-				}
-				else{
-					return false;
-				}
-				
-			}
-		}		
-		return false;
-
-
+		return list.contains(ID);
 	}
 
 	public boolean checkGender(){
@@ -153,7 +140,7 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 			}
 		}
 		
-		else if(firstTwoDigit.equals("64")||firstTwoDigit.equals("63")||firstTwoDigit.equals("62")||firstTwoDigit.equals("61")){
+		else if(firstTwoDigit.equals("64")||firstTwoDigit.equals("63")){
 			if(checkGender()){
 				System.out.print("Male dormitory\nL1, L2, L3\n-------------\nYou select : ");
 				String dorm = input.next();
@@ -191,12 +178,51 @@ Scanner input = new Scanner(System.in); // if make this non static field to stat
 				else{
 					System.out.println("You type wrong.");
 				}
-
-				
-					
-				
-				
+			}
 		}
+		else if(firstTwoDigit.equals("62")||firstTwoDigit.equals("61")){
+			if(checkGender()){
+				System.out.print("Male dormitory\nL1, L2, L3\n-------------\nYou select : ");
+				String dorm = input.next();
+				dorm=dorm.toUpperCase();
+				if(dorm.equals("L1") || dorm.equals("L2")|| dorm.equals("L3")) 
+				{	
+					GenericBooking<LamduanInfo> myDorm= new GenericBooking<>(lamduanDorm);
+					myDorm.print(dorm);
+																												
+				}
+				else{
+					System.out.println("You type wrong.");
+				}
+			}
+			else{
+				System.out.print("Female dormitory\nChinese Dorm (Type C1 for this)\nSakhtong 1(Type S1 for this)\nSakhtong 2(Type S2 for this)\nSakhtong 3(Type S3 for this)\nL7\nL8\n-------------\nYou select : ");
+				String dorm = input.next();
+				dorm=dorm.toUpperCase();
+				if(dorm.equals("C1")) 
+				{ GenericBooking<ChineseDormInfo> myDorm = new GenericBooking<>(ChineseDorm);
+					myDorm.print(dorm);																									
+				}
+				else if(dorm.equals("S1")||dorm.equals("S2")) 
+				{ GenericBooking<Sakhtong12Info> myDorm = new GenericBooking<>(S12Dorm);
+					myDorm.print(dorm);																									
+				}
+				else if(dorm.equals("S3")) 
+				{ GenericBooking<Sakhtong3Info> myDorm = new GenericBooking<>(S3Dorm);
+					myDorm.print(dorm);																									
+				}
+				else if(dorm.equals("L7")) 
+				{ GenericBooking<L7Info> myDorm = new GenericBooking<>(L7Dorm);
+					myDorm.print(dorm);																									
+				}
+				else if(dorm.equals("L8")) 
+				{ GenericBooking<L8Info> myDorm = new GenericBooking<>(L8Dorm);
+					myDorm.print(dorm);																									
+				}
+				else{
+					System.out.println("You type wrong.");
+				}
+			}
 		}
 		else {
 			System.out.println("Wrong ID!");
